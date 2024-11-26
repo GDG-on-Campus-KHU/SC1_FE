@@ -1,5 +1,5 @@
 import React from 'react'
-import KeywordButton from './KeywordButton'
+import KeywordButton from '../../../components/KeywordButton'
 import styled from 'styled-components'
 import theme from '../../../styles/theme';
 import WaringIcon from "../../../assets/warning.svg"

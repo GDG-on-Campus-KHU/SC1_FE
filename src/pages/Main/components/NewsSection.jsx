@@ -1,7 +1,6 @@
 import React from 'react'
-import NewsComponent from './NewsComponent'
+import NewsComponent from '../../../components/NewsComponent'
 import styled from 'styled-components'
-import theme from '../../../styles/theme';
 
 const Container = styled.div`
   display: grid;
