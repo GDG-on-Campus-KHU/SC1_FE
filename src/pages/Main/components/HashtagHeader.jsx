@@ -8,7 +8,7 @@ const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 58px;
+    height: 20%;
 `
 
 const SuggestText = styled.div`
