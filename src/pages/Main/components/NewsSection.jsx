@@ -1,14 +1,16 @@
 import React from 'react'
-import NewsComponent from './NewsComponent'
+import NewsComponent from '../../../components/NewsComponent'
 import styled from 'styled-components'
-import theme from '../../../styles/theme';
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2열 */
   gap: 18px; /* 아이템 간 간격 */
   width: 100%;
-`;
+  height: 80%;
+  padding-bottom: 10px;
+  overflow-y: auto;
+  `;
 
 export default function NewsSection() {
     const newsData = [

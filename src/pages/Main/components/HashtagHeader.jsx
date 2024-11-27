@@ -1,5 +1,5 @@
 import React from 'react'
-import KeywordButton from './KeywordButton'
+import KeywordButton from '../../../components/KeywordButton'
 import styled from 'styled-components'
 import theme from '../../../styles/theme';
 import WaringIcon from "../../../assets/warning.svg"
@@ -8,7 +8,7 @@ const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 58px;
+    height: 20%;
 `
 
 const SuggestText = styled.div`
