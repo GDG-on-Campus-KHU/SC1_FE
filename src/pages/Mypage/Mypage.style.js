@@ -7,7 +7,6 @@ export const App = styled.div`
   margin: 8dvh 0;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   h1 {
     font-family: "Noto Sans KR";
@@ -25,8 +24,6 @@ export const Container = styled.div`
   max-width: 500px;
   height: 84dvh;
 
-  overflow-y: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,14 +33,14 @@ export const Container = styled.div`
 `;
 
 export const Profile = styled.div`
-  width: 70%;
+  // width: 90%;
   height: 14dvh;
-
+  padding: 0 10dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 10%;
+
   gap: 20px;
 
   border-radius: 10px;
@@ -70,8 +67,52 @@ export const Profile = styled.div`
 
 export const Line = styled.section`
   width: 100%;
-  height: 1%;
-  margin: 4dvh 0;
-
+  height: 1dvh;
+  margin: 3dvh 0 2dvh 0;
   background: ${theme.colors.background[200]};
+`;
+
+/* Keywords */
+export const KeywordContainer = styled.div`
+  width: 90%;
+  align-items: center; /* 세로 중앙 정렬 */
+`;
+
+export const KeywordSlider = styled.div`
+  display: flex;
+  align-items: center;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* 스크롤 부드럽게 */
+  scrollbar-width: none; /* Firefox에서 스크롤바 숨기기 */
+  -ms-overflow-style: none; /* IE에서 스크롤바 숨기기 */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari에서 스크롤바 숨기기 */
+  }
+`;
+
+/* News */
+export const NewsContainer = styled.div`
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    width: 100%;
+  }
+`;
+
+export const News = styled.div`
+  width: 100%;
+  height: 40dvh;
+  display: grid;
+  overflow-y: auto;
+  padding: 0 2dvh 1dvh 2dvh;
+
+  grid-template-columns: repeat(2, 1fr); /* 2열 */
+  gap: 18px; /* 아이템 간 간격 */
 `;
