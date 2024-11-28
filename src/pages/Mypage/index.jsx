@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import * as S from "./Mypage.style";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer";
-import NewsComponent from "../../components/NewsComponent";
-import KeywordButton from "../../components/KeywordButton";
+
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Profile from "./components/Profile";
+import Keyword from "./components/Keyword";
+import News from "./components/News";
 export default function Mypage() {
   const [name, setName] = useState("000");
   const [comment, setComment] = useState("오늘도 안전한 하루 되세요 ! 🍀"); // 랜덤으로 코멘트 불러옴
@@ -112,43 +114,11 @@ export default function Mypage() {
     <S.App>
       <Header page={"마이페이지"} />
       <S.Container>
-        <S.Profile>
-          <h3>{name}님</h3>
-          {/* <h3>{userName}님</h3> */}
-          <p>{comment}</p>
-        </S.Profile>
+        <Profile name={name} comment={comment} />
+        {/* <Profile name={userName} comment={comment} /> */}
         <S.Line />
-        <S.KeywordContainer id="keyword">
-          <h1>저장한 키워드</h1>
-          <S.KeywordSlider>
-            {keyword.map((value) => {
-              return (
-                <>
-                  <KeywordButton keyword={value} />
-                </>
-              );
-            })}
-          </S.KeywordSlider>
-        </S.KeywordContainer>
-        <S.NewsContainer id="news">
-          <h1>저장한 뉴스</h1>
-          <S.News>
-            {news.map((value, index) => {
-              console.log(value);
-              return (
-                <>
-                  <NewsComponent
-                    key={index}
-                    // key={value.article_id}
-                    title={value.title}
-                    tag={value.keyword[0]}
-                    // tag={value.keywords[0]}
-                  />
-                </>
-              );
-            })}
-          </S.News>
-        </S.NewsContainer>
+        <Keyword keyword={keyword} />
+        <News news={news} />
       </S.Container>
       <Footer isMypage={true} />
     </S.App>
