@@ -40,6 +40,7 @@ const AllButton = styled.button`
   font-size: 12px;
   color: white;
   margin-right: 5px;
+  border: none;
 `;
 
 const AddButton = styled.button`
