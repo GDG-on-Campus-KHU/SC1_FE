@@ -42,17 +42,17 @@ const Tag = styled.div`
   color: white;
 `;
 
-export default function NewsComponent({ key, title, tag }) {
-  const truncateTitle = (text, maxLength) => {
-    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-  };
+export default function NewsComponent({ key, title, tag, onClick }) {
+    const truncateTitle = (text, maxLength) => {
+        return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+    };
 
-  return (
-    <Container>
-      <TitleContainer>
-        <Title>{truncateTitle(title, 26)}</Title>
-        <Tag>#{tag}</Tag>
-      </TitleContainer>
-    </Container>
-  );
+    return (
+        <Container onClick={onClick}>
+            <TitleContainer>
+                <Title>{truncateTitle(title, 26)}</Title>
+                <Tag>#{tag}</Tag>
+            </TitleContainer>
+        </Container>
+    );
 }
