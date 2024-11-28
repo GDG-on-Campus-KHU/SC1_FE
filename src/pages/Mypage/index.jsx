@@ -1,5 +1,7 @@
 import { useState } from "react";
 import * as S from "./Mypage.style";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer";
 export default function Mypage() {
   const [name, setName] = useState("000");
   const [comment, setComment] = useState("오늘도 안전한 하루 되세요 ! 🍀"); // 랜덤으로 코멘트 불러옴
@@ -33,11 +35,13 @@ export default function Mypage() {
 
   return (
     <S.App>
+      <Header page={"마이페이지"} />
       <S.Container>
-        <div id="profile">
-          <h1>{name}님</h1>
+        <S.Profile>
+          <h3>{name}님</h3>
           <p>{comment}</p>
-        </div>
+        </S.Profile>
+        <S.Line />
         <div id="keyword">
           <h1>저장한 키워드</h1>
           {keyword.map((value) => {
@@ -49,12 +53,14 @@ export default function Mypage() {
           })}
         </div>
         {/* 스크롤 가능, grid */}
+
         <div id="news">
+          <h1>저장한 뉴스</h1>
           {news.map((value) => {
             return (
               <>
                 <img src={value.image} alt="뉴스 이미지" />
-                <h2>{value.title}</h2>
+                <p>{value.title}</p>
                 {value.keyword.map((value) => {
                   return (
                     <>
@@ -67,6 +73,7 @@ export default function Mypage() {
           })}
         </div>
       </S.Container>
+      <Footer isMypage={true} />
     </S.App>
   );
 }
