@@ -5,7 +5,7 @@ const news = createSlice({
   initialState: {
     news: [
       {
-        title: "news_title_example_1",
+        title: "",
         article_id: "",
         url: "",
         source: "",

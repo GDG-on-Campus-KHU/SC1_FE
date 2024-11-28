@@ -75,7 +75,8 @@ export default function Mypage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const user_id = localStorage.getItem("id"); // 로그인에서 가져온 유저 정보는 로컬 스토리지에 저장
+  const userId = localStorage.getItem("id"); // 로그인에서 가져온 유저 정보는 로컬 스토리지에 저장
+  const userName = localStorage.getItem("userName"); // 로그인에서 가져온 유저 정보는 로컬 스토리지에 저장
   const accessToken = localStorage.getItem("accessToken");
 
   const getSavedNews = async () => {
@@ -83,7 +84,7 @@ export default function Mypage() {
       const res = await axios.post(
         "serverURL/api/user/article",
         {
-          user_id: user_id,
+          user_id: userId,
         },
         {
           headers: {
@@ -113,6 +114,7 @@ export default function Mypage() {
       <S.Container>
         <S.Profile>
           <h3>{name}님</h3>
+          {/* <h3>{userName}님</h3> */}
           <p>{comment}</p>
         </S.Profile>
         <S.Line />
