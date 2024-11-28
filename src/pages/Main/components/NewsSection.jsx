@@ -7,9 +7,10 @@ const Container = styled.div`
   grid-template-columns: repeat(2, 1fr); /* 2열 */
   gap: 18px; /* 아이템 간 간격 */
   width: 100%;
-  height: 80%;
   padding-bottom: 10px;
   overflow-y: auto;
+  padding-bottom: 9dvh;
+ 
   `;
 
 export default function NewsSection() {
@@ -24,6 +25,8 @@ export default function NewsSection() {
         { id: 8, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
         { id: 9, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
         { id: 10, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
+        { id: 11, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
+        { id: 12, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
 
     ];
 
