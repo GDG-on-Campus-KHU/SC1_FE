@@ -9,7 +9,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   width: 100%;
   padding-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
   transition: height 0.3s ease;
 `;
 

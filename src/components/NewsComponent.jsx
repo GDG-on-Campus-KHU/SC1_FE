@@ -42,13 +42,13 @@ const Tag = styled.div`
     color: white;        
 `;
 
-export default function NewsComponent({ title, tag }) {
+export default function NewsComponent({ title, tag, onClick }) {
     const truncateTitle = (text, maxLength) => {
         return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
     };
 
     return (
-        <Container>
+        <Container onClick={onClick}>
             <TitleContainer>
                 <Title>{truncateTitle(title, 26)}</Title>
                 <Tag>#{tag}</Tag>

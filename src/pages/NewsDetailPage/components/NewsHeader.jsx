@@ -8,7 +8,6 @@ const Container = styled.div`
      width: 100%;
      text-align: left;
      gap: 5px;
-
 `;
 
 const Tags = styled.div`
