@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { resetHashtags } from "../../../store/hashtag";
+import { resetHashtags } from "../../store/hashtag";
 import HashtagHeader from "./components/HashtagHeader";
 import NewsSection from "./components/NewsSection";
 import Header from "../../components/header/Header";

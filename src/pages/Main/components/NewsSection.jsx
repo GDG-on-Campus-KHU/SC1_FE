@@ -16,6 +16,7 @@ const Container = styled.div`
 export default function NewsSection({newsData}) {
     const navigate = useNavigate(); // useNavigate 사용
 
+
     const handleClick = (id) => {
         console.log(id);
         navigate(`/detail/${id}`); // 클릭 시 /detail/:id로 이동

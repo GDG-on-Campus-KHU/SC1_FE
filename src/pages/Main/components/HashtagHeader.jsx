@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import KeywordButton from '../../../components/KeywordButton'
+import MainKeywordButton from "../../../components/MainKeywordButton";
 import styled from "styled-components";
 import theme from "../../../styles/theme";
 import WaringIcon from "../../../assets/warning.svg";
@@ -83,7 +83,7 @@ export default function HashtagHeader() {
       </SuggestText>
       <HashtagSection showAll={showAll}>
         {displayedKeywords.map((keyword) => (
-          <KeywordButton key={keyword} keyword={keyword} />
+          <MainKeywordButton key={keyword} keyword={keyword} />
         ))}
         <AddButton onClick={toggleShowAll}>{showAll ? "접기" : "더보기"}</AddButton>
       </HashtagSection>
