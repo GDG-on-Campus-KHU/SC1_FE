@@ -13,23 +13,8 @@ const Container = styled.div`
   padding-bottom: 9dvh;
 `;
 
-export default function NewsSection() {
+export default function NewsSection({newsData}) {
     const navigate = useNavigate(); // useNavigate 사용
-
-    const newsData = [
-        { id: 1, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 2, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 3, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 4, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 5, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 6, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 7, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 8, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 9, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 10, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 11, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-        { id: 12, title: '고흥·여수 해상서 선박 화재 낚시객 추락 사고 잇따라', tag: '화재사고' },
-    ];
 
     const handleClick = (id) => {
         console.log(id);

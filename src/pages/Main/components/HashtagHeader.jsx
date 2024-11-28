@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import KeywordButton from "../../../components/KeywordButton";
+import KeywordButton from '../../../components/KeywordButton'
 import styled from "styled-components";
 import theme from "../../../styles/theme";
 import WaringIcon from "../../../assets/warning.svg";
@@ -27,20 +27,8 @@ const HashtagSection = styled.div`
   text-align: left;
   gap: 5px;
   overflow: hidden;
-    height: ${(props) => (props.showAll ? "32%" : "20%")}; /* 높이 조절 */
-  transition: height 0.3s ease; /* 부드러운 애니메이션 */
-`;
-
-const AllButton = styled.button`
-  background-color: ${theme.colors.primary[100]};
-  border-radius: 10px;
-  padding: 5px 12px;
-  text-align: center;
-  display: inline-block;
-  font-size: 12px;
-  color: white;
-  margin-right: 5px;
-  border: none;
+  height: ${(props) => (props.showAll ? "32%" : "20%")};
+  transition: height 0.3s ease;
 `;
 
 const AddButton = styled.button`
@@ -56,6 +44,7 @@ const AddButton = styled.button`
 
 export default function HashtagHeader() {
   const keywords = [
+    "전체보기",
     "홍수",
     "가뭄",
     "오물풍선",
@@ -84,7 +73,7 @@ export default function HashtagHeader() {
     setShowAll(!showAll);
   };
 
-  const displayedKeywords = showAll ? keywords : keywords.slice(0, 7); // 처음 7개만 표시
+  const displayedKeywords = showAll ? keywords : keywords.slice(0, 7);
 
   return (
     <MainContainer>
@@ -93,13 +82,10 @@ export default function HashtagHeader() {
         확인할 재난 뉴스 키워드를 선택해보세요!
       </SuggestText>
       <HashtagSection showAll={showAll}>
-        <AllButton>전체보기</AllButton>
-        {displayedKeywords.map((keyword, index) => (
-          <KeywordButton key={index} keyword={keyword} />
+        {displayedKeywords.map((keyword) => (
+          <KeywordButton key={keyword} keyword={keyword} />
         ))}
-        <AddButton onClick={toggleShowAll}>
-          {showAll ? "접기" : "더보기"}
-        </AddButton>
+        <AddButton onClick={toggleShowAll}>{showAll ? "접기" : "더보기"}</AddButton>
       </HashtagSection>
     </MainContainer>
   );
