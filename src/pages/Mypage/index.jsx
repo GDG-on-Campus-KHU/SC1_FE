@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./Mypage.style";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer";
 import NewsComponent from "../../components/NewsComponent";
 import KeywordButton from "../../components/KeywordButton";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 export default function Mypage() {
   const [name, setName] = useState("000");
   const [comment, setComment] = useState("오늘도 안전한 하루 되세요 ! 🍀"); // 랜덤으로 코멘트 불러옴
@@ -67,7 +70,42 @@ export default function Mypage() {
       keyword: ["화재사고", "화재", "추락"],
     },
   ]);
-  localStorage.getItem("userName"); // 로그인에서 가져온 유저 정보는 로컬 스토리지에 저장
+
+  const receivedNews = useSelector((state) => state.news);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const user_id = localStorage.getItem("id"); // 로그인에서 가져온 유저 정보는 로컬 스토리지에 저장
+  const accessToken = localStorage.getItem("accessToken");
+
+  const getSavedNews = async () => {
+    try {
+      const res = await axios.post(
+        "serverURL/api/user/article",
+        {
+          user_id: user_id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      console.log(res);
+      const articles = res.articles;
+      articles.map((value) => {
+        dispatch(setNews(value));
+      });
+      console.log(receivedNews); // store에 저장 잘 되었는지 확인
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  /* 서버 연동 시 주석 해제 */
+  // useEffect(() => {
+  //   getSavedNews();
+  // }, []);
 
   return (
     <S.App>
@@ -99,8 +137,10 @@ export default function Mypage() {
                 <>
                   <NewsComponent
                     key={index}
+                    // key={value.article_id}
                     title={value.title}
                     tag={value.keyword[0]}
+                    // tag={value.keywords[0]}
                   />
                 </>
               );
