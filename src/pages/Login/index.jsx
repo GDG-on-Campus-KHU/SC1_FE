@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const G_CLIENT_ID = import.meta.env.VITE_APP_GOOGLE_CLIENT_ID;
   const G_REDIRECT_URI = import.meta.env.VITE_APP_GOOGLE_REDIRECT_URL;
-  const googleURL = `https://accounts.google.com/o/oauth2/auth?client_id=${G_CLIENT_ID}&redirect_uri=${G_REDIRECT_URI}&response_type=code&scope=scope=email profile`;
+  const googleURL = `https://accounts.google.com/o/oauth2/auth?client_id=${G_CLIENT_ID}&redirect_uri=${G_REDIRECT_URI}&response_type=code&scope=profile email`;
   const navigate = useNavigate();
 
   /* 라이브러리 사용 */
