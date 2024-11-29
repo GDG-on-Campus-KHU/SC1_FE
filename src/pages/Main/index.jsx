@@ -20,7 +20,7 @@ export default function Main() {
       keywords: ["화재사고", "화재", "추락"],
     },
     {
-      article_id: "https://disaster.news.com/news.image.jpg",
+      article_id: 2,
       image_url: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라2`,
       keywords: ["화재", "화재사고", "추락"],
@@ -151,4 +151,3 @@ export default function Main() {
     </S.App>
   );
 }
-

@@ -16,7 +16,7 @@ const News = ({ news }) => {
                 title={value.title}
                 tag={value.keywords[0]}
                 keywords={value.keywords}
-                onClick={() => navigate(`/detail/${value.id}`)}
+                onClick={() => navigate(`/detail/${value.article_id}`)}
               />
             </>
           );

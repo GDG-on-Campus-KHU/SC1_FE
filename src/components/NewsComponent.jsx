@@ -59,7 +59,7 @@ const PlaceholderText = styled.div`
   display: ${({ imageUrl }) => (imageUrl ? "none" : "block")}; /* 이미지가 있을 때 숨김 */
 `;
 
-export default function NewsComponent({ key, title, tag, keywords, onClick }) {
+export default function NewsComponent({ key, title, tag, keywords, onClick, image_url }) {
   const truncateTitle = (text, maxLength) => {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
@@ -71,7 +71,7 @@ export default function NewsComponent({ key, title, tag, keywords, onClick }) {
 
   return (
     <>
-      <Container onClick={onClick}>
+      <Container onClick={onClick} imageUrl={image_url}>
         <PlaceholderText imageUrl={image_url}>기사 이미지가 없습니다</PlaceholderText>
         <TitleContainer>
           <Title>{truncateTitle(title, 26)}</Title>
