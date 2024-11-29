@@ -43,7 +43,7 @@ const Title = styled.div`
   font-family: "Noto Sans KR";
 `;
 
-export default function NewsGo() {
+export default function NewsGo({url}) {
   return (
     <Container>
       <Line />
@@ -57,7 +57,7 @@ export default function NewsGo() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://imnews.imbc.com/news/2024/world/#page=1
+          {url}
         </StyledLink>
       </LinkContainer>
     </Container>
