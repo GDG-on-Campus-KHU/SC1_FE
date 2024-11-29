@@ -5,16 +5,13 @@ import { useNavigate } from "react-router-dom";
 export default function GoogleRedirect() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
-  const state = new URL(window.location.href).searchParams.get("state");
   const code = new URL(window.location.href).searchParams.get("code");
 
   const navigate = useNavigate();
 
   const getGoogleLogin = async (state, code) => {
     try {
-      const res = await axios.get(
-        `${SERVER_URL}/auth/callback?state=${state}&code=${code}`
-      );
+      const res = await axios.get(`${SERVER_URL}/auth/callback?code=${code}`);
       console.log(res);
 
       const accessToken = res.data.access_token;
@@ -32,7 +29,7 @@ export default function GoogleRedirect() {
   };
   useEffect(() => {
     if (code) {
-      getGoogleLogin(state, code);
+      getGoogleLogin(code);
     }
   }, []);
 
