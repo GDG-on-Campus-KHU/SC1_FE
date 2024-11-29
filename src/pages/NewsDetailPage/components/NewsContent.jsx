@@ -10,13 +10,14 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const Image = styled.div`
+const Image = styled.img`
   display: flex;
   width: 90%;
   height: 200px;
   border-radius: 10px;
   background-color: #E8E8E8;
-  margin-top: 35px; 
+  margin-top: 35px;
+  object-fit: cover; /* 이미지 비율 유지 */ 
 `;
 
 const Content = styled.div`
@@ -30,14 +31,12 @@ const Content = styled.div`
 `;
 
 
-export default function NewsContent() {
+export default function NewsContent({summary, image_url}) {
   return (
     <Container>
-      <Image />
+      {image_url && <Image src={image_url} alt="News" />}
       <Content>
-        기사 요약하기 기사 요약하기 기사 요약하기 <br></br>
-        기사 요약하기 기사 요약하기 기사 요약하기 <br></br>
-        기사 요약하기 기사 요약하기 기삭 요약하기 <br></br>
+        {summary}
       </Content>
     </Container>
   )

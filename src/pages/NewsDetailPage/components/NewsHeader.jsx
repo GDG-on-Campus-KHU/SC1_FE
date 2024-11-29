@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import theme from "../../../styles/theme";
 import Bookmark_active from "../assets/bookmark_active.svg";
 import Bookmark_deactive from "../assets/bookmark_deactive.svg";
@@ -100,17 +101,38 @@ const CloseButton = styled.button`
   font-family: "Noto Sans KR";
 `;
 
-export default function NewsHeader() {
+export default function NewsHeader({ keywords, title, source, date, id }) {
   const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태
   const [isBookmarked, setIsBookmarked] = useState(false); // 북마크 상태
+  const BASE_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const handleBookmarkClick = () => {
     setIsModalOpen(true); // 모달 열기
   };
 
-  const handleModalConfirm = () => {
-    setIsBookmarked(true); // 북마크 활성화
-    setIsModalOpen(false); // 모달 닫기
+  const handleModalConfirm = async () => {
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/api/user/article`,
+        { article_id: id }, // 요청 payload
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 토큰 가져오기
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.code === 200) {
+        alert(response.data.message); // 성공 메시지
+        setIsBookmarked(true); // 북마크 활성화
+        setIsModalOpen(false); // 모달 닫기
+      } else {
+        throw new Error(response.data.message || "Failed to save article.");
+      }
+    } catch (err) {
+      alert(err.message || "Something went wrong."); // 에러 메시지
+    }
   };
 
   const handleModalCancel = () => {
@@ -122,14 +144,15 @@ export default function NewsHeader() {
       <Head>
         <Container>
           <Tags>
-            <Tag># 홍수</Tag>
-            <Tag># 화재사고</Tag>
+            {keywords.map((keyword, index) => (
+              <Tag key={index}># {keyword}</Tag>
+            ))}
           </Tags>
-          <NewsTitle>기사제목기사제목</NewsTitle>
+          <NewsTitle>{title}</NewsTitle>
           <NewsInfo>
-            <div>한겨레신문</div>
+            <div>{source}</div>
             <div>|</div>
-            <div>2024.11.19</div>
+            <div>{date}</div>
           </NewsInfo>
         </Container>
         <BookmarkIcon

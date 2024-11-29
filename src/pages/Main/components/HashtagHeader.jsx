@@ -75,7 +75,7 @@ export default function HashtagHeader() {
     setShowAll(!showAll);
   };
 
-  const displayedKeywords = showAll ? keywords : keywords.slice(0, 7);
+  const displayedKeywords = showAll ? keywords : keywords.slice(0, 9);
 
   return (
     <MainContainer>
