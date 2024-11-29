@@ -12,10 +12,9 @@ export default function GoogleRedirect() {
 
   const getGoogleLogin = async (state, code) => {
     try {
-      const res = await axios.get(`${SERVER_URL}/auth/callback`, {
-        state: state,
-        code: code,
-      });
+      const res = await axios.get(
+        `${SERVER_URL}/auth/callback?state=${state}&code=${code}`
+      );
       console.log(res);
 
       const accessToken = res.data.access_token;
