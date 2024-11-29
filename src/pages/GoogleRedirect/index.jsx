@@ -9,7 +9,7 @@ export default function GoogleRedirect() {
 
   const navigate = useNavigate();
 
-  const getGoogleLogin = async (state, code) => {
+  const getGoogleLogin = async () => {
     try {
       const res = await axios.get(`${SERVER_URL}/auth/callback?code=${code}`);
       console.log(res);
@@ -28,9 +28,7 @@ export default function GoogleRedirect() {
     }
   };
   useEffect(() => {
-    if (code) {
-      getGoogleLogin(code);
-    }
+    getGoogleLogin();
   }, []);
 
   return <div>loading...</div>;
