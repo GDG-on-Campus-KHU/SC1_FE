@@ -20,6 +20,7 @@ const SuggestText = styled.div`
   font-weight: 500;
   color: ${theme.colors.text[200]};
   margin-bottom: 15px;
+  font-family: "Noto Sans KR";
 `;
 
 const HashtagSection = styled.div`
@@ -40,6 +41,7 @@ const AddButton = styled.button`
   font-size: 12px;
   color: white;
   border: none;
+  font-family: "Noto Sans KR";
 `;
 
 export default function HashtagHeader() {

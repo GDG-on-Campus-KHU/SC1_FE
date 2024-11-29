@@ -14,6 +14,7 @@ const StyledKeyword = styled.div`
   display: inline-block;
   font-size: 12px;
   color: ${(props) => (props.isSelected ? "white" : theme.colors.primary[100])};
+
   margin-right: 5px;
   margin-bottom: 8px;
   white-space: nowrap; /* 텍스트 줄바꿈 방지 */

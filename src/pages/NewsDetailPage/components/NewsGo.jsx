@@ -33,12 +33,14 @@ const StyledLink = styled.a`
     color: #007BFF; /* 링크에 호버 시 색상 변경 (선택 사항) */
   }
   font-size: 12px;
+  font-family: "Noto Sans KR";
 `;
 
 const Title = styled.div`
   font-size: 16px;
   font-weight: 700;
   margin-top: 35px;
+  font-family: "Noto Sans KR";
 `;
 
 export default function NewsGo() {

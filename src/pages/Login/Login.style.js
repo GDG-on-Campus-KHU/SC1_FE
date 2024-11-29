@@ -41,6 +41,7 @@ export const Container = styled.div`
   h1 {
     margin: 2dvh 0 9dvh 0;
     font-size: 35px;
+    font-family: "Noto Sans KR";
     color: ${theme.colors.primary[200]};
   }
 `;

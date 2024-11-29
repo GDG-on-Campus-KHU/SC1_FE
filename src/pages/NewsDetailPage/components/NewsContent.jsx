@@ -24,16 +24,11 @@ const Content = styled.div`
   width: 90%;
   margin-top: 35px;
   text-align: left;
-  font-size: 13px;
-  line-height: 22px; 
+  font-size: 14px;
+  line-height: 22px;
+  font-family: "Noto Sans KR"; 
 `;
 
-const Line = styled.div`
-  display: flex;
-  width: 100%;
-  height: 1px;
-  background-color: #E8E8E8;
-`;
 
 export default function NewsContent() {
   return (
