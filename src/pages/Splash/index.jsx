@@ -48,24 +48,25 @@ const TextContainer = styled.div`
 
   div {
     opacity: 0; /* 초기값 */
-    animation: ${fadeIn} 0.5s ease-out forwards, ${fadeOut} 0.5s ease-in forwards 1.6s;
+    animation: ${fadeIn} 0.5s ease-out forwards,
+      ${fadeOut} 0.5s ease-in forwards 1.6s;
   }
 
   /* 각 글자에 순차적으로 딜레이 적용 (fadeIn만) */
   div:nth-child(1) {
-    animation-delay: 0s, 1.0s;
+    animation-delay: 0s, 1s;
     color: ${theme.colors.primary[200]};
   }
   div:nth-child(2) {
-    animation-delay: 0.2s, 1.0s;
+    animation-delay: 0.2s, 1s;
     color: ${theme.colors.primary[200]};
   }
   div:nth-child(3) {
-    animation-delay: 0.4s, 1.0s;
+    animation-delay: 0.4s, 1s;
     color: ${theme.colors.primary[200]};
   }
   div:nth-child(4) {
-    animation-delay: 0.6s, 1.0s;
+    animation-delay: 0.6s, 1s;
     color: ${theme.colors.primary[200]};
   }
 `;
@@ -103,7 +104,7 @@ export default function Splash() {
   useEffect(() => {
     // 애니메이션이 끝난 후 경로 이동
     const timer = setTimeout(() => {
-      navigate("/"); // '/' 경로로 이동
+      navigate("/login"); // '/' 경로로 이동
     }, 3000); // 모든 애니메이션이 끝난 후 (1.6s + 여유시간)
 
     return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 클리어
