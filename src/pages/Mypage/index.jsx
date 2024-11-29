@@ -9,8 +9,9 @@ import { useNavigate } from "react-router-dom";
 import Profile from "./components/Profile";
 import Keyword from "./components/Keyword";
 import News from "./components/News";
+import { resetHashtags } from "../../store/hashtag";
+
 export default function Mypage() {
-  const [name, setName] = useState("000");
   const [comment, setComment] = useState("오늘도 안전한 하루 되세요 ! 🍀"); // 랜덤으로 코멘트 불러옴
 
   const [keyword, setKeyword] = useState([
@@ -32,48 +33,60 @@ export default function Mypage() {
 
   const [news, setNews] = useState([
     {
+      article_id: 1,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라1`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["화재사고", "화재", "추락"],
     },
     {
+      article_id: 2,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라2`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["화재", "화재사고", "추락"],
     },
     {
+      article_id: 3,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["화재", "화재사고", "추락"],
     },
     {
+      article_id: 4,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["우박", "화재", "추락"],
     },
     {
+      article_id: 5,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["화재사고", "화재", "추락"],
     },
     {
+      article_id: 6,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["화재사고", "화재", "추락"],
     },
     {
+      article_id: 7,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["화재사고", "화재", "추락"],
     },
     {
+      article_id: 8,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keyword: ["화재사고", "화재", "추락"],
+      keywords: ["코로나", "화재", "추락"],
     },
   ]);
 
   const receivedNews = useSelector((state) => state.news);
+  const selectedHashtags = useSelector(
+    (state) => state.hashtag.selectedHashtags
+  );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -94,11 +107,13 @@ export default function Mypage() {
           },
         }
       );
-      console.log(res);
+      console.log("res");
+
       const articles = res.articles;
       articles.map((value) => {
         dispatch(setNews(value));
       });
+
       console.log(receivedNews); // store에 저장 잘 되었는지 확인
     } catch (error) {
       console.log(error);
@@ -106,19 +121,33 @@ export default function Mypage() {
   };
 
   /* 서버 연동 시 주석 해제 */
-  // useEffect(() => {
-  //   getSavedNews();
-  // }, []);
+  useEffect(() => {
+    getSavedNews();
+  }, []);
+
+  useEffect(() => {
+    dispatch(resetHashtags());
+  }, []);
+
+  const filteredNews =
+    selectedHashtags.includes("전체보기") || selectedHashtags.length === 0
+      ? news // 전체보기 또는 아무 키워드도 선택되지 않았을 때
+      : news.filter((news) => selectedHashtags.includes(news.keywords[0])); // 선택된 키워드에 해당하는 뉴스만 필터링
+
+  useEffect(() => {
+    console.log("selectedHashtags: ", selectedHashtags);
+    console.log("filteredNews: ", filteredNews);
+  }, [filteredNews]);
 
   return (
     <S.App>
       <Header page={"마이페이지"} />
       <S.Container>
-        <Profile name={name} comment={comment} />
+        <Profile name={userName} comment={comment} />
         {/* <Profile name={userName} comment={comment} /> */}
         <S.Line />
         <Keyword keyword={keyword} />
-        <News news={news} />
+        <News news={filteredNews} />
       </S.Container>
       <Footer isMypage={true} />
     </S.App>

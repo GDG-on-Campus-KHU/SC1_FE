@@ -1,21 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import NewsComponent from "../../../components/NewsComponent";
 import * as S from "../Mypage.style";
 
 const News = ({ news }) => {
+  const navigate = useNavigate();
   return (
     <S.NewsContainer id="news">
       <h1>저장한 뉴스</h1>
       <S.News>
         {news.map((value, index) => {
-          console.log(value);
           return (
             <>
               <NewsComponent
-                key={index}
-                // key={value.article_id}
+                key={value.article_id}
                 title={value.title}
-                tag={value.keyword[0]}
-                // tag={value.keywords[0]}
+                tag={value.keywords[0]}
+                onClick={() => navigate(`/detail/${value.id}`)}
               />
             </>
           );
