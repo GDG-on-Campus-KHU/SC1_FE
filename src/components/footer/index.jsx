@@ -9,7 +9,7 @@ export default function Footer({ isNews, isMypage }) {
   const navigate = useNavigate();
   return (
     <S.Container>
-      <S.Element onClick={() => navigate("/")} isMypage={isNews}>
+      <S.Element onClick={() => navigate("/main")} isMypage={isNews}>
         {isNews ? <img src={news_activate} /> : <img src={news_deactivate} />}
         <p>뉴스</p>
       </S.Element>
