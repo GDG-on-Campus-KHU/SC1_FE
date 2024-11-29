@@ -20,6 +20,8 @@ export const Container = styled.div`
     font-size: 24px;
     font-style: bold;
   }
+
+  z-index: 1000;
 `;
 
 export const Element = styled.div`

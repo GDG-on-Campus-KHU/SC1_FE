@@ -24,4 +24,6 @@ export const Container = styled.div`
   img {
     cursor: pointer;
   }
+
+  z-index: 1000;
 `;
