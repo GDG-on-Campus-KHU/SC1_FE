@@ -15,7 +15,7 @@ export default function NewsDetailPage() {
                 <NewsContent/>
                 <NewsGo/>
             </S.Container>
-            <Footer/>
+            <Footer isNews={true}/>
         </S.App>
     )
 }

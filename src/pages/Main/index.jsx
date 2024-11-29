@@ -37,12 +37,12 @@ export default function Main() {
 
   return (
     <S.App>
-      <Header />
+      <Header page="메인페이지" />
       <S.Container>
         <HashtagHeader />
         <NewsSection newsData={filteredNews} /> {/* 필터링된 데이터 전달 */}
       </S.Container>
-      <Footer />
+      <Footer isNews={true} />
     </S.App>
   );
 }
