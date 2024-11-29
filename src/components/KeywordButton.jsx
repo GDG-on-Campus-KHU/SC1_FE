@@ -10,6 +10,7 @@ const StyledKeyword = styled.div`
   text-align: center;
   display: inline-block;
   font-size: 12px;
+  font-family: "Noto Sans KR";
   color: ${theme.colors.primary[100]};
   margin-right: 5px;
   margin-bottom: 8px;

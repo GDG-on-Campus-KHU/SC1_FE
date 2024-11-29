@@ -27,8 +27,9 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 4px;
+  font-family: "Noto Sans KR";
 `;
 
 const Tag = styled.div`
@@ -38,7 +39,8 @@ const Tag = styled.div`
   padding: 4px 8px;
   text-align: center;
   display: inline-block;
-  font-size: 8px;
+  font-size: 9px;
+  font-family: "Noto Sans KR";
   color: white;
 `;
 

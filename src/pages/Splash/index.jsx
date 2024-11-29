@@ -40,10 +40,11 @@ const appearInCenter = keyframes`
 
 // TextContainer 스타일 정의
 const TextContainer = styled.div`
+font-family: "Noto Sans KR";
   display: flex;
   gap: 3px; /* 글자 간 간격 */
   font-size: 36px;
-  font-weight: 900;
+  font-weight: 800;
   position: relative;
 
   div {
@@ -73,6 +74,7 @@ const TextContainer = styled.div`
 
 // CenterContainer 스타일 정의
 const CenterContainer = styled.div`
+font-family: "Noto Sans KR";
   display: flex;
   position: relative;
   gap: 10px;
@@ -87,7 +89,7 @@ const CenterContainer = styled.div`
   top: 50%;
   left: 50%;
   font-size: 36px;
-  font-weight: 900;
+  font-weight: 800;
   color: ${theme.colors.primary[200]};
 `;
 

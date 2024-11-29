@@ -12,6 +12,7 @@ const StyledKeyword = styled.div`
   padding: 5px 10px;
   text-align: center;
   display: inline-block;
+  font-family: "Noto Sans KR";
   font-size: 12px;
   color: ${(props) =>
     props.isSelected ? "white" : theme.colors.primary[100]};

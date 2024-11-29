@@ -26,10 +26,11 @@ const Tags = styled.div`
 const Tag = styled.div`
   background-color: ${theme.colors.primary[100]};
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 4px 8px;
   text-align: center;
   display: inline-block;
-  font-size: 10px;
+  font-size: 11px;
+  font-family: "Noto Sans KR";
   color: white;
 `;
 
@@ -39,11 +40,13 @@ const NewsInfo = styled.div`
   flex-direction: row;
   gap: 5px;
   font-size: 13px;
+  font-family: "Noto Sans KR";
 `;
 
 const NewsTitle = styled.div`
   font-size: 24px;
   font-weight: 700;
+  font-family: "Noto Sans KR";
 `;
 
 const BookmarkIcon = styled.img`
@@ -70,6 +73,7 @@ const ModalContainer = styled.div`
   border-radius: 10px;
   text-align: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Noto Sans KR";
 `;
 
 const Button = styled.button`
@@ -81,6 +85,7 @@ const Button = styled.button`
   background-color: ${theme.colors.primary[100]};
   color: white;
   font-size: 14px;
+  font-family: "Noto Sans KR";
 `;
 
 const CloseButton = styled.button`
@@ -92,6 +97,7 @@ const CloseButton = styled.button`
   background-color: #ededed;
   color: black;
   font-size: 14px;
+  font-family: "Noto Sans KR";
 `;
 
 export default function NewsHeader() {
