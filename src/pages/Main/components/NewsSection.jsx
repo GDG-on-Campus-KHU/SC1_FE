@@ -26,10 +26,10 @@ export default function NewsSection({newsData}) {
         <Container>
             {newsData.map((news) => (
                 <NewsComponent
-                    key={news.id} // 고유 키
+                    key={news.article_id} // 고유 키
                     title={news.title}
-                    tag={news.tag}
-                    onClick={() => handleClick(news.id)} // 클릭 이벤트 전달
+                    tag={news.keywords[0]}
+                    onClick={() => handleClick(news.article_id)} // 클릭 이벤트 전달
                 />
             ))}
         </Container>
