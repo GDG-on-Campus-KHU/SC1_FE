@@ -26,7 +26,7 @@ export default function GoogleRedirect() {
       localStorage.setItem("userName", userName);
       localStorage.setItem("userId", userId);
 
-      navigate("/");
+      navigate("/main");
     } catch (error) {
       console.log(error);
     }
