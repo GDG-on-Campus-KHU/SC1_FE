@@ -98,7 +98,7 @@ export default function Mypage() {
   const getSavedNews = async () => {
     try {
       const res = await axios.post(
-        "serverURL/api/user/article",
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/user/article`,
         {
           user_id: userId,
         },
