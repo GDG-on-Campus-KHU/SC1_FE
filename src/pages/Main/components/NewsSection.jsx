@@ -29,6 +29,7 @@ export default function NewsSection({newsData}) {
                     key={news.article_id} // 고유 키
                     title={news.title}
                     tag={news.keywords[0]}
+                    image_url={news.image_url}
                     onClick={() => handleClick(news.article_id)} // 클릭 이벤트 전달
                 />
             ))}

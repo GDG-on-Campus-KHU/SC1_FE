@@ -5,11 +5,15 @@ import theme from "../styles/theme";
 const Container = styled.div`
   width: 100%;
   height: 166px;
-  background-color: #e8e8e8;
+  background-color: ${({ imageUrl }) => (imageUrl ? "transparent" : "#e8e8e8")};
+  background-image: ${({ imageUrl }) => (imageUrl ? `url(${imageUrl})` : "none")};
   border-radius: 10px;
-  display: flex; /* Flexbox 활성화 */
-  flex-direction: column; /* 세로 방향 정렬 */
-  justify-content: flex-end; /* 하단으로 배치 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center; /* "이미지가 없습니다" 텍스트 중앙 정렬 */
+  background-size: cover;
+  position: relative; /* 텍스트를 이미지 위에 배치 가능하도록 설정 */
 `;
 
 const TitleContainer = styled.div`
@@ -44,17 +48,27 @@ const Tag = styled.div`
   color: white;
 `;
 
-export default function NewsComponent({ key, title, tag, onClick }) {
-    const truncateTitle = (text, maxLength) => {
-        return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-    };
+const PlaceholderText = styled.div`
+  display: flex;
+  margin-bottom: 25px;
+  font-size: 10px;
+  color: #666;
+  font-family: "Noto Sans KR";
+  display: ${({ imageUrl }) => (imageUrl ? "none" : "block")}; /* 이미지가 있을 때 숨김 */
+`;
 
-    return (
-        <Container onClick={onClick}>
-            <TitleContainer>
-                <Title>{truncateTitle(title, 26)}</Title>
-                <Tag>#{tag}</Tag>
-            </TitleContainer>
-        </Container>
-    );
+export default function NewsComponent({ key, title, tag, onClick, image_url }) {
+  const truncateTitle = (text, maxLength) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
+
+  return (
+    <Container onClick={onClick} imageUrl={image_url}>
+      <PlaceholderText imageUrl={image_url}>기사 이미지가 없습니다</PlaceholderText>
+      <TitleContainer>
+        <Title>{truncateTitle(title, 26)}</Title>
+        <Tag>#{tag}</Tag>
+      </TitleContainer>
+    </Container>
+  );
 }

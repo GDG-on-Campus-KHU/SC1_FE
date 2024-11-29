@@ -15,49 +15,49 @@ export default function Main() {
   const [newsData, setNewsData] = useState([
     {
       article_id: 1,
-      image: "example1",
+      image_url: null,
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라1`,
       keywords: ["화재사고", "화재", "추락"],
     },
     {
-      article_id: 2,
-      image: "example1",
+      article_id: "https://disaster.news.com/news.image.jpg",
+      image_url: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라2`,
       keywords: ["화재", "화재사고", "추락"],
     },
     {
       article_id: 3,
-      image: "example1",
+      image_url: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
       keywords: ["화재", "화재사고", "추락"],
     },
     {
       article_id: 4,
-      image: "example1",
+      image_url: "example1",
       title: `111고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
       keywords: ["우박", "화재", "추락"],
     },
     {
       article_id: 5,
-      image: "example1",
+      image_url: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
       keywords: ["화재사고", "화재", "추락"],
     },
     {
       article_id: 6,
-      image: "example1",
+      image_url: null,
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
       keywords: ["화재사고", "화재", "추락"],
     },
     {
       article_id: 7,
-      image: "example1",
+      image_url: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
       keywords: ["화재사고", "화재", "추락"],
     },
     {
       article_id: 8,
-      image: "example1",
+      image_url: "example1",
       title: `666고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
       keywords: ["코로나", "화재", "감염병"],
     },
@@ -145,7 +145,7 @@ export default function Main() {
       <Header page="메인페이지" />
       <S.Container>
         <HashtagHeader />
-        <NewsSection newsData={filteredNews} /> {/* 필터링된 데이터 전달 */}
+        <NewsSection newsData={filteredNews}/> {/* 필터링된 데이터 전달 */}
       </S.Container>
       <Footer isNews={true} />
     </S.App>
