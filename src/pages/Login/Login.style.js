@@ -48,6 +48,7 @@ export const Container = styled.div`
 export const LoginButton = styled.button`
   width: 50%;
   height: 6dvh;
+  min-height: 50px;
 
   border: none;
 
