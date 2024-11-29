@@ -30,6 +30,7 @@ export default function NewsSection({newsData}) {
                     title={news.title}
                     tag={news.keywords[0]}
                     image_url={news.image_url}
+                    keywords={news.keywords}
                     onClick={() => handleClick(news.article_id)} // 클릭 이벤트 전달
                 />
             ))}

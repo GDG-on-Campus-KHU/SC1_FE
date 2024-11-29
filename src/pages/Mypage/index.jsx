@@ -132,9 +132,7 @@ export default function Mypage() {
   const filteredNews =
     selectedHashtags.includes("전체보기") || selectedHashtags.length === 0
       ? news // 전체보기 또는 아무 키워드도 선택되지 않았을 때
-      : news.filter((news) =>
-        news.keywords.some((keyword) => selectedHashtags.includes(keyword))
-      ); // 선택된 키워드 중 하나라도 포함되면 필터링
+      : news.filter((news) => selectedHashtags.includes(news.keywords[0])); // 선택된 키워드에 해당하는 뉴스만 필터링
 
   useEffect(() => {
     console.log("selectedHashtags: ", selectedHashtags);

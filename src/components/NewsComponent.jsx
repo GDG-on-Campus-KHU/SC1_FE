@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
+import KeywordModal from "./keywordModal";
 
 const Container = styled.div`
   width: 100%;
@@ -46,6 +47,7 @@ const Tag = styled.div`
   font-size: 9px;
   font-family: "Noto Sans KR";
   color: white;
+  cursor: pointer;
 `;
 
 const PlaceholderText = styled.div`
@@ -57,18 +59,33 @@ const PlaceholderText = styled.div`
   display: ${({ imageUrl }) => (imageUrl ? "none" : "block")}; /* 이미지가 있을 때 숨김 */
 `;
 
-export default function NewsComponent({ key, title, tag, onClick, image_url }) {
+export default function NewsComponent({ key, title, tag, keywords, onClick }) {
   const truncateTitle = (text, maxLength) => {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
-    <Container onClick={onClick} imageUrl={image_url}>
-      <PlaceholderText imageUrl={image_url}>기사 이미지가 없습니다</PlaceholderText>
-      <TitleContainer>
-        <Title>{truncateTitle(title, 26)}</Title>
-        <Tag>#{tag}</Tag>
-      </TitleContainer>
-    </Container>
+    <>
+      <Container onClick={onClick}>
+        <PlaceholderText imageUrl={image_url}>기사 이미지가 없습니다</PlaceholderText>
+        <TitleContainer>
+          <Title>{truncateTitle(title, 26)}</Title>
+          <Tag
+            onClick={(e) => {
+              e.stopPropagation();
+              handleModal();
+            }}
+          >
+            #{tag}
+          </Tag>
+        </TitleContainer>
+        <KeywordModal isOpen={isModalOpen} keywords={keywords} />
+      </Container>
+    </>
   );
 }
