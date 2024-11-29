@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
+import KeywordModal from "./keywordModal";
 
 const Container = styled.div`
   width: 100%;
@@ -10,6 +11,8 @@ const Container = styled.div`
   display: flex; /* Flexbox 활성화 */
   flex-direction: column; /* 세로 방향 정렬 */
   justify-content: flex-end; /* 하단으로 배치 */
+
+  position: relative;
 `;
 
 const TitleContainer = styled.div`
@@ -42,19 +45,35 @@ const Tag = styled.div`
   font-size: 9px;
   font-family: "Noto Sans KR";
   color: white;
+  cursor: pointer;
 `;
 
-export default function NewsComponent({ key, title, tag, onClick }) {
-    const truncateTitle = (text, maxLength) => {
-        return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-    };
+export default function NewsComponent({ key, title, tag, keywords, onClick }) {
+  const truncateTitle = (text, maxLength) => {
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    return (
-        <Container onClick={onClick}>
-            <TitleContainer>
-                <Title>{truncateTitle(title, 26)}</Title>
-                <Tag>#{tag}</Tag>
-            </TitleContainer>
-        </Container>
-    );
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  return (
+    <>
+      <Container onClick={onClick}>
+        <TitleContainer>
+          <Title>{truncateTitle(title, 26)}</Title>
+          <Tag
+            onClick={(e) => {
+              e.stopPropagation();
+              handleModal();
+            }}
+          >
+            #{tag}
+          </Tag>
+        </TitleContainer>
+        <KeywordModal isOpen={isModalOpen} keywords={keywords} />
+      </Container>
+    </>
+  );
 }

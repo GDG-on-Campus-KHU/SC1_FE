@@ -36,7 +36,7 @@ export default function Mypage() {
       article_id: 1,
       image: "example1",
       title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라1`,
-      keywords: ["화재사고", "화재", "추락"],
+      keywords: ["화재사고", "화재", "추락", "우박"],
     },
     {
       article_id: 2,
@@ -94,36 +94,36 @@ export default function Mypage() {
   const userName = localStorage.getItem("userName"); // 로그인에서 가져온 유저 정보는 로컬 스토리지에 저장
   const accessToken = localStorage.getItem("accessToken");
 
-  const getSavedNews = async () => {
-    try {
-      const res = await axios.post(
-        "serverURL/api/user/article",
-        {
-          user_id: userId,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      console.log("res");
+  // const getSavedNews = async () => {
+  //   try {
+  //     const res = await axios.post(
+  //       "serverURL/api/user/article",
+  //       {
+  //         user_id: userId,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       }
+  //     );
+  //     console.log("res");
 
-      const articles = res.articles;
-      articles.map((value) => {
-        dispatch(setNews(value));
-      });
+  //     const articles = res.articles;
+  //     articles.map((value) => {
+  //       dispatch(setNews(value));
+  //     });
 
-      console.log(receivedNews); // store에 저장 잘 되었는지 확인
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     console.log(receivedNews); // store에 저장 잘 되었는지 확인
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   /* 서버 연동 시 주석 해제 */
-  useEffect(() => {
-    getSavedNews();
-  }, []);
+  // useEffect(() => {
+  //   getSavedNews();
+  // }, []);
 
   useEffect(() => {
     dispatch(resetHashtags());
@@ -132,7 +132,9 @@ export default function Mypage() {
   const filteredNews =
     selectedHashtags.includes("전체보기") || selectedHashtags.length === 0
       ? news // 전체보기 또는 아무 키워드도 선택되지 않았을 때
-      : news.filter((news) => selectedHashtags.includes(news.keywords[0])); // 선택된 키워드에 해당하는 뉴스만 필터링
+      : news.filter((news) =>
+          news.keywords.some((keyword) => selectedHashtags.includes(keyword))
+        ); // 선택된 키워드 중 하나라도 포함되면 필터링
 
   useEffect(() => {
     console.log("selectedHashtags: ", selectedHashtags);
