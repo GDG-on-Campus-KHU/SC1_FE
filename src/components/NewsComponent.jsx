@@ -7,7 +7,8 @@ const Container = styled.div`
   width: 100%;
   height: 166px;
   background-color: ${({ imageUrl }) => (imageUrl ? "transparent" : "#e8e8e8")};
-  background-image: ${({ imageUrl }) => (imageUrl ? `url(${imageUrl})` : "none")};
+  background-image: ${({ imageUrl }) =>
+    imageUrl ? `url(${imageUrl})` : "none"};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@ const Container = styled.div`
 
 const TitleContainer = styled.div`
   width: 100%;
-  height: 82px;
+  // height: 150px;
   padding: 10px;
   box-sizing: border-box;
   background-color: white;
@@ -32,19 +33,19 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 12px;
+  font-size: 10px;
   margin-bottom: 4px;
   font-family: "Noto Sans KR";
 `;
 
 const Tag = styled.div`
   background-color: ${theme.colors.primary[100]};
-  width: 40px;
+  width: 40%;
   border-radius: 10px;
   padding: 4px 8px;
   text-align: center;
   display: inline-block;
-  font-size: 9px;
+  font-size: 10px;
   font-family: "Noto Sans KR";
   color: white;
   cursor: pointer;
@@ -56,10 +57,18 @@ const PlaceholderText = styled.div`
   font-size: 10px;
   color: #666;
   font-family: "Noto Sans KR";
-  display: ${({ imageUrl }) => (imageUrl ? "none" : "block")}; /* 이미지가 있을 때 숨김 */
+  display: ${({ imageUrl }) =>
+    imageUrl ? "none" : "block"}; /* 이미지가 있을 때 숨김 */
 `;
 
-export default function NewsComponent({ key, title, tag, keywords, onClick, image_url }) {
+export default function NewsComponent({
+  key,
+  title,
+  tag,
+  keywords,
+  onClick,
+  image_url,
+}) {
   const truncateTitle = (text, maxLength) => {
     return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
   };
@@ -72,7 +81,9 @@ export default function NewsComponent({ key, title, tag, keywords, onClick, imag
   return (
     <>
       <Container onClick={onClick} imageUrl={image_url}>
-        <PlaceholderText imageUrl={image_url}>기사 이미지가 없습니다</PlaceholderText>
+        <PlaceholderText imageUrl={image_url}>
+          기사 이미지가 없습니다
+        </PlaceholderText>
         <TitleContainer>
           <Title>{truncateTitle(title, 26)}</Title>
           <Tag

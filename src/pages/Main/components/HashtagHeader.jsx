@@ -87,7 +87,9 @@ export default function HashtagHeader() {
         {displayedKeywords.map((keyword) => (
           <MainKeywordButton key={keyword} keyword={keyword} />
         ))}
-        <AddButton onClick={toggleShowAll}>{showAll ? "접기" : "더보기"}</AddButton>
+        <AddButton onClick={toggleShowAll}>
+          {showAll ? "접기" : "더보기"}
+        </AddButton>
       </HashtagSection>
     </MainContainer>
   );

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -15,9 +15,9 @@ const Image = styled.img`
   width: 90%;
   height: 200px;
   border-radius: 10px;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   margin-top: 35px;
-  object-fit: cover; /* 이미지 비율 유지 */ 
+  object-fit: cover; /* 이미지 비율 유지 */
 `;
 
 const Content = styled.div`
@@ -27,17 +27,14 @@ const Content = styled.div`
   text-align: left;
   font-size: 14px;
   line-height: 22px;
-  font-family: "Noto Sans KR"; 
+  font-family: "Noto Sans KR";
 `;
 
-
-export default function NewsContent({summary, image_url}) {
+export default function NewsContent({ summary, image_url }) {
   return (
     <Container>
       {image_url && <Image src={image_url} alt="News" />}
-      <Content>
-        {summary}
-      </Content>
+      <Content>{summary}</Content>
     </Container>
-  )
+  );
 }
