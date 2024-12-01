@@ -9,9 +9,22 @@ export default function GoogleRedirect() {
 
   const navigate = useNavigate();
 
+  function generateState() {
+    // 16바이트의 랜덤 값을 생성하고 이를 16진수 문자열로 변환
+    return Array.from(window.crypto.getRandomValues(new Uint8Array(16)))
+      .map((byte) => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
   const getGoogleLogin = async () => {
+    const state = generateState();
+
+    console.log("client state: ", state);
+    console.log("client code: ", code);
     try {
-      const res = await axios.get(`${SERVER_URL}/auth/callback?code=${code}`);
+      const res = await axios.get(
+        `${SERVER_URL}/auth/callback?state=${state}&code=${code}`
+      );
       console.log(res);
 
       const accessToken = res.data.access_token;
@@ -31,5 +44,5 @@ export default function GoogleRedirect() {
     getGoogleLogin();
   }, []);
 
-  return <div>loading...</div>;
+  return <div>loading…</div>;
 }

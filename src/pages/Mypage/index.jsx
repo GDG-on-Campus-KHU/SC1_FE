@@ -14,71 +14,35 @@ import { resetHashtags } from "../../store/hashtag";
 export default function Mypage() {
   const [comment, setComment] = useState("오늘도 안전한 하루 되세요 ! 🍀"); // 랜덤으로 코멘트 불러옴
 
-  const [keyword, setKeyword] = useState([
-    "태풍",
-    "코로나",
-    "화재사고",
-    "배고파",
-    "지진",
-    "홍수",
-    "가뭄",
-    "폭염",
-    "오물풍선",
-    "해일",
-    "산사태",
-    "우박",
-    "테러",
-    "전쟁",
-  ]);
+  const [keyword, setKeyword] = useState(["폭설", "한파", "해일", "화재"]);
 
   const [news, setNews] = useState([
     {
       article_id: 1,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라1`,
-      keywords: ["화재사고", "화재", "추락"],
-    },
-    {
-      article_id: 2,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라2`,
-      keywords: ["화재", "화재사고", "추락"],
+      image_url:
+        "https://news.kbs.co.kr/data/news/title_image/newsmp4/newsplaza_p1/2024/11/29/20_8118406.jpg",
+      title: `폭설 뒤 기온 ‘뚝’…전국 곳곳에 다시 눈·비 [출근길 날씨]`,
+      keywords: ["폭설"],
     },
     {
       article_id: 3,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keywords: ["화재", "화재사고", "추락"],
-    },
-    {
-      article_id: 4,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keywords: ["우박", "화재", "추락"],
-    },
-    {
-      article_id: 5,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keywords: ["화재사고", "화재", "추락"],
-    },
-    {
-      article_id: 6,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keywords: ["화재사고", "화재", "추락"],
-    },
-    {
-      article_id: 7,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keywords: ["화재사고", "화재", "추락"],
+      image_url:
+        "https://www.chosun.com/resizer/v2/N3TB5MT27ZNJTETJRGPMLAYXQA.JPG?auth=f2587cc0dac5e332bb159913112f0d6856f47e17a93e375f2afb4966f4d079c5&width=616",
+      title: "폭설 뒤 기습 한파… 주말까지 겨울 추위 계속",
+      keywords: ["폭설", "한파"],
     },
     {
       article_id: 8,
-      image: "example1",
-      title: `고흥·여수 해상서 선박 화재\n 낚시객 추락 사고 잇따라3`,
-      keywords: ["코로나", "화재", "추락"],
+      image_url:
+        "https://news.kbs.co.kr/data/news/2024/11/29/20241129_rarqjr.jpg",
+      title: `경기 김포시 가건물에서 화재…“인명피해 없어”`,
+      keywords: ["화재"],
+    },
+    {
+      article_id: 10,
+      image_url: null,
+      title: `전남 목포에 해일주의보`,
+      keywords: ["해일"],
     },
   ]);
 
@@ -96,7 +60,7 @@ export default function Mypage() {
 
   const getSavedNews = async () => {
     try {
-      const res = await axios.post(
+      const res = await axios.get(
         `${import.meta.env.VITE_APP_SERVER_URL}/api/user/article`,
         {
           user_id: userId,

@@ -14,8 +14,7 @@ const StyledKeyword = styled.div`
   display: inline-block;
   font-family: "Noto Sans KR";
   font-size: 12px;
-  color: ${(props) =>
-    props.isSelected ? "white" : theme.colors.primary[100]};
+  color: ${(props) => (props.isSelected ? "white" : theme.colors.primary[100])};
   margin-right: 5px;
   margin-bottom: 8px;
   cursor: pointer;
@@ -23,7 +22,9 @@ const StyledKeyword = styled.div`
 
 export default function MainKeywordButton({ keyword }) {
   const dispatch = useDispatch();
-  const selectedHashtags = useSelector((state) => state.hashtag.selectedHashtags);
+  const selectedHashtags = useSelector(
+    (state) => state.hashtag.selectedHashtags
+  );
 
   // "전체보기"가 활성화 조건: 선택된 해시태그가 없거나 "전체보기"가 포함되어 있을 때
   const isSelected =

@@ -6,6 +6,8 @@ export const App = styled.div`
   margin: 8dvh 0;
   display: flex;
   justify-content: center;
+
+  overflow-y: auto;
 `;
 
 export const Container = styled.div`
