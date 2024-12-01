@@ -52,7 +52,8 @@ const NewsTitle = styled.div`
 
 const BookmarkIcon = styled.img`
   cursor: pointer;
-  margin: ${({ isActive }) => (isActive ? "0 10px 0 0" : "0")}; /* active 상태일 때 margin 적용 */
+  margin: ${({ isActive }) =>
+    isActive ? "0 10px 0 0" : "0"}; /* active 상태일 때 margin 적용 */
 `;
 
 const ModalBackground = styled.div`
@@ -134,6 +135,35 @@ export default function NewsHeader({ keywords, title, source, date, id }) {
       alert(err.message || "Something went wrong."); // 에러 메시지
     }
   };
+
+  // const handleModalConfirm = async () => {
+  //   console.log("dfdfdf", id);
+  //   try {
+  //     const response = await axios.post(
+  //       `${BASE_URL}/api/user/article`,
+  //       { article_id: 1 }, // 요청 payload
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 토큰 가져오기
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+
+  //     console.log(response);
+
+  //     if (response.status === 200) {
+  //       alert(response.data.message); // 성공 메시지
+  //       setIsBookmarked(true); // 북마크 활성화
+  //       setIsModalOpen(false); // 모달 닫기
+  //     } else {
+  //       throw new Error(response.data.message || "Failed to save article.");
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     alert(err.message || "Something went wrong."); // 에러 메시지
+  //   }
+  // };
 
   const handleModalCancel = () => {
     setIsModalOpen(false); // 모달 닫기

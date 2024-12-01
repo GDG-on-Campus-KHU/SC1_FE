@@ -10,7 +10,10 @@ import * as S from "./Mainpage.style";
 
 export default function Main() {
   const dispatch = useDispatch();
-  const selectedHashtags = useSelector((state) => state.hashtag.selectedHashtags); // Redux 상태에서 키워드 가져오기
+
+  const selectedHashtags = useSelector(
+    (state) => state.hashtag.selectedHashtags
+  ); // Redux 상태에서 키워드 가져오기
   const BASE_URL = import.meta.env.VITE_APP_SERVER_URL; // .env에서 가져오기
   const [newsData, setNewsData] = useState([
     {
@@ -92,9 +95,18 @@ export default function Main() {
 
   const MainfetchAllNews = async () => {
     try {
-      const response = await axios.post(`${BASE_URL}/api/news`, {
-        keyword: allKeywords.join(", "), // 전체 키워드 묶어서 요청
-      });
+      const response = await axios.get(
+        `${BASE_URL}/api/articles`,
+        {
+          keyword: allKeywords.join(", "), // 전체 키워드 묶어서 요청
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 토큰 가져오기
+            "Content-Type": "application/json", // Content-Type 설정
+          },
+        }
+      );
 
       if (response.data.code === 200) {
         setNewsData(response.data.articles); // 성공적으로 데이터 받아오면 설정
@@ -110,9 +122,18 @@ export default function Main() {
     if (!selectedHashtags.includes("전체보기")) return; // 전체보기가 선택된 경우만 요청
 
     try {
-      const response = await axios.post(`${BASE_URL}/api/news`, {
-        keyword: allKeywords.join(", "), // 전체 키워드 묶어서 요청
-      });
+      const response = await axios.get(
+        `${BASE_URL}/api/articles`,
+        {
+          keyword: allKeywords.join(", "), // 전체 키워드 묶어서 요청
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // 토큰 가져오기
+            "Content-Type": "application/json", // Content-Type 설정
+          },
+        }
+      );
 
       if (response.data.code === 200) {
         setNewsData(response.data.articles); // 성공적으로 데이터 받아오면 설정
@@ -137,15 +158,15 @@ export default function Main() {
     selectedHashtags.includes("전체보기") || selectedHashtags.length === 0
       ? newsData // 전체보기 또는 아무 키워드도 선택되지 않았을 때
       : newsData.filter((news) =>
-        news.keywords.some((keyword) => selectedHashtags.includes(keyword))
-      ); // 선택된 키워드 중 하나라도 포함되면 필터링
+          news.keywords.some((keyword) => selectedHashtags.includes(keyword))
+        ); // 선택된 키워드 중 하나라도 포함되면 필터링
 
   return (
     <S.App>
       <Header page="메인페이지" />
       <S.Container>
         <HashtagHeader />
-        <NewsSection newsData={filteredNews}/> {/* 필터링된 데이터 전달 */}
+        <NewsSection newsData={filteredNews} /> {/* 필터링된 데이터 전달 */}
       </S.Container>
       <Footer isNews={true} />
     </S.App>
