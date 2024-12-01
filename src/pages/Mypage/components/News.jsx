@@ -8,7 +8,7 @@ const News = ({ news }) => {
     <S.NewsContainer id="news">
       <h1>저장한 뉴스</h1>
       <S.News>
-        {news.map((value, index) => {
+        {news.map((value) => {
           return (
             <>
               <NewsComponent
@@ -17,6 +17,7 @@ const News = ({ news }) => {
                 tag={value.keywords[0]}
                 keywords={value.keywords}
                 onClick={() => navigate(`/detail/${value.article_id}`)}
+                image_url={value.image_url}
               />
             </>
           );
